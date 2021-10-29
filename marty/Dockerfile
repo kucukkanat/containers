@@ -1,11 +1,13 @@
 FROM ubuntu
 
+ENV HOME=/root
+
 # Install apt packages
 RUN apt update
 RUN apt install tmux vim wget curl jq git -y
 
 # Copy bash before starting to install deps and add to path 
-COPY .bash_profile /root/.bash_profile
+COPY .bash_profile $HOME/.bash_profile
 
 # Install FZF
 RUN apt install fzf
@@ -46,8 +48,8 @@ RUN /downloads/go/bin/go get github.com/jesseduffield/lazygit
 RUN /downloads/go/bin/go get github.com/jesseduffield/lazydocker
 
 # Configure Vim
-COPY .vimrc /root/.vimrc
+COPY .vimrc $HOME/.vimrc
 # Configure Tmux
-COPY .tmux.conf /root/.tmux.conf
+COPY .tmux.conf $HOME/.tmux.conf
 
 ENTRYPOINT [ "bash", "-l" ]
