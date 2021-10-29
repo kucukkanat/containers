@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [ $1 = "arm" ]
+then
+wget https://golang.org/dl/go1.17.2.linux-arm64.tar.gz -O go.tar.gz
+else
+wget https://golang.org/dl/go1.17.2.linux-amd64.tar.gz -O go.tar.gz
+fi
+
+# Extract downloaded binaries
+tar -xzf go.tar.gz
+
+cat <<EOF >> $HOME/.bash_profile
+# Go binaries
+export PATH=\$PATH:$(pwd)/go/bin
+# Go libraries
+export PATH=\$PATH:$HOME/go/bin
+EOF

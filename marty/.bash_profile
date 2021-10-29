@@ -1,6 +1,8 @@
 # Noninteractive tzdata installation : https://www.cyberciti.biz/faq/explain-debian_frontend-apt-get-variable-for-ubuntu-debian/
 export DEBIAN_FRONTEND=noninteractive
 
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
 # Git shortcuts
 alias gpush="git push origin HEAD"
 alias gc="git commit -m"

@@ -20,14 +20,8 @@ RUN npm i -g yarn
 
 # Install Golang
 WORKDIR /downloads
-# RUN wget https://golang.org/dl/go1.17.2.linux-amd64.tar.gz -O go.tar.gz
-RUN wget https://golang.org/dl/go1.17.2.linux-arm64.tar.gz -O go.tar.gz
-RUN tar -xzf go.tar.gz
-    # Go binaries
-RUN echo "export PATH=\$PATH:/downloads/go/bin" >> $HOME/.bash_profile
-    # Go libraries
-RUN echo "export PATH=\$PATH:$HOME/go/bin" >> $HOME/.bash_profile
-RUN echo "export LSCOLORS=gxfxcxdxbxegedabagacad" >> $HOME/.bash_profile
+COPY install_golang install_golang
+RUN ./install_golang arm
 
 # Install LF
 COPY install_lf install_lf
