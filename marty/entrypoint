@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+cat <<EOF
+Welcome to the developer container of KUCUKKANAT !
+
+To access & control host containers please run marty with 
+
+docker run \
+--rm -it \
+-v /var/run/docker.sock:/var/run/docker.sock \
+marty
+EOF
+echo;
+echo;
+
+bash -l
+

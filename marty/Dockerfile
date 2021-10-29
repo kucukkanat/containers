@@ -1,3 +1,4 @@
+FROM docker AS docker-image
 FROM ubuntu
 
 ENV HOME=/root
@@ -46,4 +47,9 @@ COPY .vimrc $HOME/.vimrc
 # Configure Tmux
 COPY .tmux.conf $HOME/.tmux.conf
 
-ENTRYPOINT [ "bash", "-l" ]
+# Install docker
+COPY --from=docker-image /usr/local/bin/docker /usr/local/bin/docker
+
+# Use entrypoint
+COPY entrypoint entrypoint
+ENTRYPOINT [ "./entrypoint" ]
