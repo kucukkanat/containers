@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+VIM_PLUGIN_DIR="$HOME/.vim/pack/vendor/start"
+rm -rf $VIM_PLUGIN_DIR
+mkdir -p $VIM_PLUGIN_DIR
+
+cd $VIM_PLUGIN_DIR
+# Install nerdtree
+git clone https://github.com/preservim/nerdtree.git $VIM_PLUGIN_DIR/nerdtree
+cat <<EOF >> $HOME/.vimrc
+" Toggle NERDTree easily!
+nmap ,n :NERDTreeFind<CR>
+nmap ,m :NERDTreeToggle<CR>
+" Show hidden files on NERDtree by default
+let NERDTreeShowHidden=1
+EOF
+
+
+# VSCode theme
+git clone https://github.com/tomasiser/vim-code-dark.git $VIM_PLUGIN_DIR/codedark
+cat <<EOF >> $HOME/.vimrc
+" VSCode colorscheme
+set t_Co=256
+colorscheme codedark
+EOF
+
+# COC Vim Autocomplete
+git clone -b release https://github.com/neoclide/coc.nvim.git $VIM_PLUGIN_DIR/coc.vim
+cat <<EOF >> $HOME/.vimrc
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+EOF
+
+# Vim Prettier
+git clone https://github.com/prettier/vim-prettier $VIM_PLUGIN_DIR/vim-prettier
+yarn global add prettier
+
+# Vim GO
+git clone https://github.com/fatih/vim-go.git $VIM_PLUGIN_DIR/vim-go
+
+# FZF Vim
+git clone https://github.com/junegunn/fzf.vim.git $VIM_PLUGIN_DIR/fzf.vim
+
+# Vim Fugitive
+git clone https://tpope.io/vim/fugitive.git $VIM_PLUGIN_DIR/fugitive
+# vim -u NONE -c "helptags fugitive/doc" -c q
+
+# Vim Typescript
+git clone https://github.com/leafgarland/typescript-vim.git $VIM_PLUGIN_DIR/typescript-vim

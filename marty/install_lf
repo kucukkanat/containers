@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+/downloads/go/bin/go get github.com/gokcehan/lf
+cat <<EOF >> $HOME/.bash_profile
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+EOF
+
