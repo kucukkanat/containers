@@ -3,5 +3,17 @@
 Build with build args:
 
 ```shell
-docker build --build-arg URL="<GITHUB_REPO_URL>" --build-arg TOKEN="<GITHUB_RUNNER_TOKEN>" -t runner .
+docker build --build-arg URL="<GITHUB_REPO_URL>" --build-arg TOKEN="<GITHUB_RUNNER_TOKEN>" -t github-runner .
+```
+
+Run with docker socket  and network binding
+
+```shell
+docker run --rm -itd \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v $(pwd)/.env:/.env \
+--name runner \
+--network host \
+github-runner
+
 ```
