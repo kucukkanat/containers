@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+export DEBIAN_FRONTEND=noninteractive
+
+# Download & extract
+if [ $1 = "arm" ]
+then
+curl -O -L https://github.com/actions/runner/releases/download/v2.283.3/actions-runner-linux-arm64-2.283.3.tar.gz
+tar xzf ./actions-runner-linux-arm64-2.283.3.tar.gz
+else
+curl -O -L https://github.com/actions/runner/releases/download/v2.283.3/actions-runner-linux-x64-2.283.3.tar.gz
+tar xzf ./actions-runner-linux-x64-2.283.3.tar.gz
+fi
+
+# Install dependencies
+./bin/installdependencies.sh
+
+# Configure
+./config.sh --url $URL --token $TOKEN

@@ -1,0 +1,7 @@
+# Build
+
+Build with build args:
+
+```shell
+docker build --build-arg URL="<GITHUB_REPO_URL>" --build-arg TOKEN="<GITHUB_RUNNER_TOKEN>" -t runner .
+```
