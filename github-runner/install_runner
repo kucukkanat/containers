@@ -13,6 +13,7 @@ tar xzf ./actions-runner-linux-x64-2.283.3.tar.gz
 fi
 
 # Install dependencies
+# This comes from the github runner tarball extract
 ./bin/installdependencies.sh
 
 # Configure
