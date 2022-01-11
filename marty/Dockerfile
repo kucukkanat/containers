@@ -33,8 +33,7 @@ COPY install_vim_plugins install_vim_plugins
 RUN ./install_vim_plugins
 
 # Install Bash Git Prompt
-COPY install_git_prompt install_git_prompt
-RUN ./install_git_prompt
+RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
 # Install Lazygit
 RUN /downloads/go/bin/go get github.com/jesseduffield/lazygit

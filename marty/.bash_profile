@@ -28,3 +28,5 @@ ld () {
     lazydocker
 }
 
+# Starship prompt
+eval "$(starship init bash)"
